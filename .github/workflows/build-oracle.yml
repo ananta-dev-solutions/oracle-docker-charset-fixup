@@ -25,9 +25,9 @@ jobs:
 
       - name: Prepare RPM in build context
         run: |
-          curl -fL "${RPM_URL}" -o infra/oracle-custom-v18/oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
-          echo "${RPM_SHA256}  infra/oracle-custom-v18/oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm" | sha256sum -c -
-          ls -lh infra/oracle-custom-v18/
+          curl -fL "${RPM_URL}" -o oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
+          echo "${RPM_SHA256}  oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm" | sha256sum -c -
+          ls -lh
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -42,9 +42,8 @@ jobs:
       - name: Build and push image
         uses: docker/build-push-action@v6
         with:
-          context: infra/oracle-custom-v18
+          context: .
           file: Dockerfile.2130
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
-            
