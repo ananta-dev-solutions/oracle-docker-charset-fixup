@@ -44,8 +44,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: infra/oracle-custom-v18
-          file: infra/oracle-custom-v18/Dockerfile.2130
+          file: Dockerfile.2130
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:latest
-            
