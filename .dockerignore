@@ -1,0 +1,8 @@
+*
+!Dockerfile.2130
+!install.2130.sh
+!container-entrypoint.sh
+!resetPassword
+!createAppUser
+!healthcheck.sh
+!oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm
