@@ -32,7 +32,9 @@ ENV ORACLE_BASE=/opt/oracle \
 
 COPY oracle-database-xe-21c-1.0-1.ol8.x86_64.rpm install.2130.sh container-entrypoint.sh resetPassword createAppUser healthcheck.sh /install/
 
-RUN /install/install.2130.sh "${BUILD_MODE}"
+RUN sed -i 's/\r$//' /install/install.2130.sh /install/container-entrypoint.sh /install/healthcheck.sh /install/resetPassword /install/createAppUser \
+ && chmod +x /install/install.2130.sh /install/container-entrypoint.sh /install/healthcheck.sh /install/resetPassword /install/createAppUser \
+ && /install/install.2130.sh "${BUILD_MODE}"
 
 ##########################################################################################
 ### Layer 1 --> Core OS
